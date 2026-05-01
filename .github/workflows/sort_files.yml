@@ -1,4 +1,4 @@
-name: 📝 Sorf files
+name: 📝 Sort files
 
 on:
   workflow_dispatch:
@@ -6,31 +6,44 @@ on:
 jobs:
   sort:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: write
 
-      - name: Group split zip files into subfolders
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Group split zip/deb/part files into subfolders
         run: |
           cd downloads || exit 0
 
-          # Get all unique base names (strip .zip / .z01 .z02 ...)
-          declare -A bases
           for file in *; do
             if [[ -f "$file" ]]; then
-              base=$(echo "$file" | sed -E 's/\.(zip|z[0-9]{2})$//')
+              # Remove .zip, .z01..z99, .deb, .part extensions
+              base="${file%.zip}"
+              base="${base%.z[0-9][0-9]}"
+              base="${base%.deb}"
+              base="${base%.part}"
+              
               if [[ "$base" != "$file" ]]; then
-                bases["$base"]=1
+                echo "📁 Creating folder: $base"
+                mkdir -p "$base"
+                mv "$base".* "$base"/ 2>/dev/null || true
               fi
             fi
           done
 
-          # Move each group into its own folder
-          for base in "${!bases[@]}"; do
-            echo "📁 Creating folder: $base"
-            mkdir -p "$base"
-            mv "$base".* "$base"/ 2>/dev/null && echo "   Moved files starting with $base.*" || echo "   No files found for $base"
-          done
+      - name: Commit and push organized structure
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
-          if [[ ${#bases[@]} -eq 0 ]]; then
-            echo "No split zip files found in downloads/ folder."
+          git add downloads/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "[AVASAM] Organize split files into folders [skip ci]"
+            git pull --rebase origin "${{ github.ref_name }}"
+            git push origin HEAD:"${{ github.ref_name }}"
+            echo "✅ Sorting changes pushed"
           fi
