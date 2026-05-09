@@ -1,4 +1,4 @@
-# mhrv-rs-android-universal-v1.9.18.apk - Download Failed
+# mhrv-rs-android-universal-v1.9.18
 
 ---
 
@@ -6,35 +6,25 @@
 
 | Property | Value |
 |----------|-------|
-| **File** | `mhrv-rs-android-universal-v1.9.18.apk` |
-| **URL** | mhrv-rs-android-universal-v1.9.18.apk |
-| **Date** | 2026-05-08 23:41:59 UTC |
-| **Status** | **FAILED** |
+| **Original File** | `mhrv-rs-android-universal-v1.9.18.apk` |
+| **Size** | 41.11 MB |
+| **Status** | **Complete (100%)** |
+| **Password Protected** | **NO** |
 
 ---
 
-## Error Details
+## Download Link
 
-```
-Download failed after 3 attempts. Last error: curl: (6) Could not resolve host: mhrv-rs-android-universal-v1.9.18.apk
-Warning: Problem : timeout. Will retry in 5 seconds. 3 retries left.
-#=#=#                                                                          curl: (6) Could not resolve host: mhrv-rs-android-universal-v1.9.18.apk
-Warning: Problem : timeout. Will retry in 5 seconds. 2 retries left.
-##O#-#                                                                         curl: (6) Could not resolve host: mhrv-rs-android-universal-v1.9.18.apk
-Warning: Problem : timeout. Will retry in 5 seconds. 1 retries left.
-##O=#  #                                                                       curl: (6) Could not resolve host: mhrv-rs-android-universal-v1.9.18.apk
-```
+| File | Link |
+|------|------|
+| `mhrv-rs-android-universal-v1.9.18.zip` | [Download](https://github.com/Pooya-Ebad/downloader/raw/main/downloads/mhrv-rs-android-universal-v1.9.18/mhrv-rs-android-universal-v1.9.18.zip) |
 
 ---
 
-## Possible Solutions
+## How to Extract
 
-- Check if the URL is correct and accessible
-- The file may have been removed or moved
-- The server may require authentication
-- For SourceForge: Try using the direct download link
-- Some servers block automated downloads (403 Forbidden)
-- Try again later if it is a temporary server issue
+1. **Open** `mhrv-rs-android-universal-v1.9.18.zip` with WinRAR, 7-Zip, Ark, or any standard zip tool
+2. **Extract** the file
 
 ---
 
